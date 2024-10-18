@@ -30,7 +30,7 @@
     insert.oncomplete=function(){
       console.log("Einfügen von Buchtiteln beendet");
 }
-    let search=db.transaction("book","readonly");
+    let search=db.transaction("books","readonly");
     store=search.objectStore("books");
     let gesuchtes_Buch="DB in WebApps";
     let index=store.index("bytitle");
