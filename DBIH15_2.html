@@ -38,7 +38,7 @@
     request.onsuccess=function(evt) {
       let matching=request.result;
       if(matching!=undefined) {
-      console.log("Suche von \""+ evt.target.result.title + "\" erfolgreich:"+ matching.author + "(" + matchingisbn + ")");
+      console.log("Suche von \""+ evt.target.result.title + "\" erfolgreich:"+ matching.author + "(" + matching.isbn + ")");
       } else {
       console.log("Buch" + gesuchtes_Buch + "wurde nicht gefunden.");
       };
