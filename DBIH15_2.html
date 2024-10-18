@@ -33,7 +33,7 @@
     let search=db.transaction("books","readonly");
     store=search.objectStore("books");
     let gesuchtes_Buch="DB in WebApps";
-    let index=store.index("bytitle");
+    let index=store.index("by_title");
     let request=index.get(gesuchtes_Buch);
     request.onsuccess=function(evt) {
       let matching=request.result;
