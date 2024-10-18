@@ -16,7 +16,7 @@
       let store=db.createObjectStore("books",
         {keyPath:"isbn"});
     let titleIndex=store.createIndex("by_title","title", {unique: true});
-    let authoreIndex=store.createindex("by_author","author");
+    let authorIndex=store.createIndex("by_author","author");
 
     store.put({title:"Compilerbau",author:"Aho, Sethi, Ullman",isbn:123456});
     store.put({title:"Algorithmik",author:"Schöning",isbn:345678});
