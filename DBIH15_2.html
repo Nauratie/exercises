@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beispiel1.10 - Asynchronus IndexedDB</title>
+</head>
+<body>
+  <h2>IndexedDB-Demo</h2>
+  <script type="text/javascript">
+  let request=indexedDB.open("library",1);
+
+  request.onupgradeneeded=function() {
+      console.log("Bücher-Datenbank angelegt");
+      let db=this.result;
+      let store=db.createObjectStore("books",
+        {keyPath:"isbn"});
+    let titleIndex=store.createIndex("by_title","title", {unique: true});
+    let authoreIndex=store.createindex("by_author","author");
+
+    store.put({title:"Compilerbau",author:"Aho, Sethi, Ullman",isbn:123456});
+    store.put({title:"Algorithmik",author:"Schöning",isbn:345678});
+  };
+  request.onsuccess=function() {
+    let db=this.result;
+    let insert=db.transaction("books","readwrite");
+    let store=insert.objectStore("books");
+    store.put({title:"DB in WebApps",author:"Wagenknecht",isbn:723456});
+    store.put({title:"Informatik",author:"Kerner",isbn:931567});
+    insert.oncomplete=function(){
+      console.log("Einfügen von Buchtiteln beendet");
+}
+    let search=db.transaction("book","readonly");
+    store=search.objectStore("books");
+    let gesuchtes_Buch="DB in WebApps";
+    let index=store.index("bytitle");
+    let request=index.get(gesuchtes Buch);
+    request.onsuccess=function(evt) {
+      let matching=request.result;
+      if(matching!=undefined) {
+      console.log("Suche von \""
+      + evt.target.result.title + "\" erfolgreich:"
+      + matching.author + "(" + matchingisbn + ")");
+      } else {
+      console.log("Buch" + gesuchtes_Buch + "wurde nicht gefunden.");
+      };
+    }
+    tx=db.transaction("books","readonly");
+    store=tx.objectStore("books");
+    let range=IDBKeyRange.lowerBound(0);
+    let cursorRequest=store.openCursor(range);
+
+    cursorRequest.onsuccess=function(evt){
+    let result=evt.target.result;     if(result){
+       console.log("Buch:",result.value);
+         result.continue();
+    };
+    };
+    tx.oncomplete=function() {
+      console.log("Vollständige Buchliste erstellt");
+      db.close();
+      console.log("Die Datenbank wurde geschlossen.");
+      indexedDB.deleteDatabase("library");
+      console.log("Die Bücher-Datenbank wurde gelöscht.");
+    };
+    };
+}; 
+</script>
+</body>
+</html>
