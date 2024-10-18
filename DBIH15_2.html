@@ -34,13 +34,11 @@
     store=search.objectStore("books");
     let gesuchtes_Buch="DB in WebApps";
     let index=store.index("bytitle");
-    let request=index.get(gesuchtes Buch);
+    let request=index.get(gesuchtes_Buch);
     request.onsuccess=function(evt) {
       let matching=request.result;
       if(matching!=undefined) {
-      console.log("Suche von \""
-      + evt.target.result.title + "\" erfolgreich:"
-      + matching.author + "(" + matchingisbn + ")");
+      console.log("Suche von \""+ evt.target.result.title + "\" erfolgreich:"+ matching.author + "(" + matchingisbn + ")");
       } else {
       console.log("Buch" + gesuchtes_Buch + "wurde nicht gefunden.");
       };
@@ -51,7 +49,8 @@
     let cursorRequest=store.openCursor(range);
 
     cursorRequest.onsuccess=function(evt){
-    let result=evt.target.result;     if(result){
+    let result=evt.target.result;     
+    if(result){
        console.log("Buch:",result.value);
          result.continue();
     };
