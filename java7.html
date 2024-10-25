@@ -17,9 +17,11 @@ function multiply(b,c) {
   return(b*c);}
 
 function capitalize(string) {
-  return(
-   toUpperCase(
-     string.charAt(0)));}
+  let Firstletter = string.charAt(0);
+
+  let Firstcapital = Firstletter.toUppercase();
+
+  return(Firstcapital); }  
 
 console.log(add7());
 console.log(multiply());
