@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ESADBI15</title>
 </head>
 <body>
 
     <script>
 
+        function displayDate() {
+            document.getElementById("demo").innerHTML = Date();
+        }
+
+        function count() {
+            document.getElementById("counter").innerHTML
+        }
         let i = 0
         
     </script>
 
-    <button time onClick="alert(time)">Uhrzeit:</button>
+    <button onClick="displayDate()">Uhrzeit:</button>
+    <p id="demo"></p>
 
-    <button counter onClick="i++ alert(i)">Zähler:</button>
-
+    <button onClick="count()">Zähler:</button>
+    <p id="counter"></p>
 </body>
 </html>
