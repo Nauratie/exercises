@@ -18,8 +18,8 @@
         document.getElementById("counter").addEventListener("click", count);
         
         function count() {
-            let i = i+1;
-            return i;
+            i = i+1;
+            document.getElementById("counterDisplay").innerHTML="Zähler: " +i;
         }
         
     </script>
@@ -27,6 +27,7 @@
     <button onClick="displayDate()">Uhrzeit:</button>
     <p id="demo"></p>
 
-    <button id="counter">Zähler:</button>
+    <button id="counter">Zähler erhöhen</button>
+    <p id="counterDisplay">Zähler: 0</p>
 </body>
 </html>
