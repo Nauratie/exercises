@@ -13,21 +13,23 @@
             document.getElementById("demo").innerHTML = Date();
         }
 
-        let i = 0;
+        let i = 0;  // Globaler Zähler
 
+        // Event Listener für den Button zum Erhöhen des Zählers
         document.getElementById("counter").addEventListener("click", count);
-        
+
         function count() {
-            i = i+1;
-            document.getElementById("counterDisplay").innerHTML="Zähler: " +i;
+            i = i + 1;  // Zähler erhöhen
+            document.getElementById("counterDisplay").innerHTML = "Zähler: " + i;  // Zähler anzeigen
         }
-        
+
     </script>
 
     <button onClick="displayDate()">Uhrzeit:</button>
     <p id="demo"></p>
 
     <button id="counter">Zähler erhöhen</button>
-    <p id="counterDisplay">Zähler: 0</p>
+    <p id="counterDisplay">Zähler: 0</p>  <!-- Anzeige des Zählers -->
+
 </body>
 </html>
